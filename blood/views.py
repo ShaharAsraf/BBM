@@ -373,6 +373,7 @@ def admin_donation_view(request):
 
     donations=dmodels.BloodDonate.objects.all()
 
+    # writing all data to audit trail file
     # data = ET.Element('data')
     donate = ET.Element('donate')
     for t in donations:
