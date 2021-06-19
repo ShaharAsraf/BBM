@@ -13,6 +13,7 @@ from patient import models as pmodels
 from donor import forms as dforms
 from patient import forms as pforms
 import xml.etree.ElementTree as ET
+import datetime
 
 
 
@@ -377,7 +378,7 @@ def admin_donation_view(request):
     # data = ET.Element('data')
     donate = ET.Element('donate')
     for t in donations:
-        print(t.age)
+
 
         # items = ET.SubElement(data, 'items')
         # item1 = ET.SubElement(items, 'item')
@@ -391,7 +392,7 @@ def admin_donation_view(request):
         age = ET.SubElement(donate, 'Age')
         blood_group = ET.SubElement(donate, 'Blood group')
         unit = ET.SubElement(donate, 'Unit')
-        request_date = ET.SubElement(donate, 'Request date')
+        request_date = ET.SubElement(donate, 'Date')
         status = ET.SubElement(donate, 'Status')
         donor_name.text = str(t.donor)
         age.text = str(t.age)

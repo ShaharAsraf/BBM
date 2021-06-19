@@ -1,6 +1,8 @@
 from django.db import models
 from patient import models as pmodels
 from donor import models as dmodels
+import datetime
+
 class Stock(models.Model):
     bloodgroup=models.CharField(max_length=10)
     unit=models.PositiveIntegerField(default=0)
@@ -16,7 +18,7 @@ class BloodRequest(models.Model):
     bloodgroup=models.CharField(max_length=10)
     unit=models.PositiveIntegerField(default=0)
     status=models.CharField(max_length=20,default="Pending")
-    date=models.DateField(auto_now=True)
+    date=models.DateField(default=datetime.datetime.now()+datetime.timedelta(days=42))
     def __str__(self):
         return self.bloodgroup
 

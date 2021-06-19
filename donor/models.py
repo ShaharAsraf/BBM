@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+import datetime
 class Donor(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     profile_pic= models.ImageField(upload_to='profile_pic/Donor/',null=True,blank=True)
@@ -28,6 +28,6 @@ class BloodDonate(models.Model):
     bloodgroup=models.CharField(max_length=10)
     unit=models.PositiveIntegerField(default=0)
     status=models.CharField(max_length=20,default="Pending")
-    date=models.DateField(auto_now=True)
+    date=models.DateField(default=datetime.datetime.now()+datetime.timedelta(days=42))
     def __str__(self):
         return self.donor
